@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  #MongoDB Service
+  mongo_db:
+    #Container name is optional
+    container_name: db_container
+    #it will fetch mongo image from hub.docker
+    image: mongo:latest
+    #If mongodb server crash with any reason it will restart
+    restart: always
+    #setup port for mongodb to connect it local
+    ports:
+      - 2717:27017
+    #It will store data outside the container in local machine
+    volumes:
+      - mongo_db:/data/db
+
+  #Node API service
+  api:
+    build: .
+    ports:
+      - 3000:3000
+    #it will alow to make changes in code and reflect in docker without create again image
+    volumes:
+      - .:/usr/src/app
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      SECRET_KEY: 5uh4jusuddlLmRcMy4z74gzzbhjxq25x
+    depends_on:
+      - mongo_db
+
+volumes:
+  mongo_db: {}

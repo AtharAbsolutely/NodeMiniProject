@@ -1,0 +1,59 @@
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <div class="w-full h-full bg-zinc-900 overflow-auto bg-cover bg-center p-10 text-white"
+        style="background-image: url('https://images.unsplash.com/photo-1497091071254-cc9b2ba7c48a?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <div class="mt-0">
+            <h1 class="text-4xl font-semibold">Create An Account</h1>
+
+            <form class="flex flex-col w-[390px]" action="/register" method="post">
+                <input
+                    class="px-6 py-8 mt-5 h-14 text-md bg-[#31434c] rounded-lg outline-none placeholder-[#788d8b] placeholder:text-md"
+                    type="text" name="name" placeholder="Name" id="" required="true">
+                <input
+                    class="px-6 py-8 mt-5 h-14 text-md bg-[#31434c] rounded-lg outline-none placeholder-[#788d8b] placeholder:text-md"
+                    type="username" name="username" placeholder="Username" id="" required="true">
+                <input
+                    class="px-6 py-8 mt-5 h-14 text-md bg-[#31434c] rounded-lg outline-none placeholder-[#788d8b] placeholder:text-md"
+                    type="email" name="email" placeholder="Email" id="" required="true">
+                <input
+                    class="px-6 py-8 mt-5 h-14 text-md bg-[#31434c] rounded-lg outline-none placeholder-[#788d8b] placeholder:text-md"
+                    type="number" name="age" placeholder="Age" id="" required="true">
+                <input
+                    class="px-6 py-8 mt-5 h-14 text-md bg-[#31434c] rounded-lg outline-none placeholder-[#788d8b] placeholder:text-md"
+                    type="gender" name="gender" placeholder="Gender" id="" required="true">
+                <input
+                    class="px-6 py-8 mt-5 h-14 text-md bg-[#31434c] rounded-lg outline-none placeholder-[#788d8b] placeholder:text-md"
+                    type="text" name="imageUrl" placeholder="ImageUrl" id="">
+
+                <input
+                    class="px-6 py-8 mt-5 h-14 text-md bg-[#31434c] rounded-lg outline-none placeholder-[#788d8b] placeholder:text-md"
+                    type="password" name="password" placeholder="Password" id="" required="true">
+
+                <input class="text-zinc-700 bg-amber-200 rounded-lg mt-5 py-2 px-4 text-[24px] font-semibold"
+                    type="submit" value="Sign up">
+            </form>
+
+            <div class="flex item-center  mt-5">
+                <h4 class="text-gray-200 text-gray-400 mr-1">Already have an account?</h3>
+                    <a class="text-amber-200" href="/">Login</a>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

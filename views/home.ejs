@@ -1,0 +1,167 @@
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <div class="w-full h-full bg-zinc-900 overflow-auto bg-cover bg-center p-10 text-white"
+        style="background-image: url('https://images.unsplash.com/photo-1497091071254-cc9b2ba7c48a?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <!-- <div class="mt-10">
+            <h1 class="text-4xl font-semibold">Welcome <%=user.name%></h1>
+            <h1 class="text-2xl font-semibold mb-10"><%=user.email%></h1>
+
+            <a class="mr-2 text-zinc-700 bg-amber-200 rounded-lg py-2 px-4 text-[24px] font-semibold"
+                href="/logout">Logout</a>
+            <a class="mt-10 text-white bg-zinc-800 rounded-lg py-2 px-4 text-[24px] font-semibold" href="/delete">Delete
+                Account</a>
+        </div> -->
+        <nav class=" dark:bg-transparent">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class="w-20 h-20 rounded-full border-4 border-blue-500 overflow-hidden">
+                        <img src="https://picsum.photos/200" alt="Profile Image" class="object-cover w-20  h-20">
+                    </div>
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                        <%=user.name%>
+                    </span>
+                </a>
+                <button data-collapse-toggle="navbar-default" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul
+                        class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+                        <li>
+                            <a href="/home" class="text-amber-200 hover:text-amber-300" aria-current="page">Home</a>
+                        </li>
+                        <li>
+                            <a href="/myPost" class="text-white hover:text-amber-300">My
+                                Post</a>
+                        </li>
+                        <li>
+                            <a href="/createPost" class="text-white hover:text-amber-300">Create
+                                Post</a>
+                        </li>
+                        <li>
+                            <a href="/profile" class="text-white hover:text-amber-300">Profile</a>
+                        </li>
+                        <li>
+                            <a href="/logout" class="text-white hover:text-amber-300">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="tasks flex gap-3 flex-wrap p-10">
+            <% if(postList.length>0){
+                %>
+                <% postList.forEach(function(val){ %>
+                    <div
+                        class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <a href="<%=val.imageUrl%>">
+                            <img class="rounded-t-lg w-full h-48 object-cover" src="<%=val.imageUrl%>" alt="" />
+                        </a>
+                        <div class="pt-2 pr-5 flex flex-row justify-end">
+                            <h1 class="text-gray-500">
+                                <%=val.likes.length%> Likes
+                            </h1>
+                        </div>
+                        <div class="pr-5 pl-5 pb-5">
+
+                            <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                <%=val.title%>
+                            </h5>
+
+
+
+                            <% if(user._id.toString()==val.user._id.toString()){ %>
+                                <a href="/profile">
+                                    <h5 class="mb-2 tracking-tight text-gray-900 dark:text-gray-400">
+                                        @<%=val.user.username%>
+                                    </h5>
+                                </a>
+                                <% }else { %>
+                                    <a href="/otherProfile/<%=val.user._id%>">
+                                        <h5 class="mb-2 tracking-tight text-gray-900 dark:text-gray-400">
+                                            @<%=val.user.username%>
+                                        </h5>
+                                    </a>
+
+                                    <% } %>
+
+                                        <p
+                                            class="mb-3 font-normal text-gray-700 dark:text-gray-400 h-48 overflow-hidden ">
+                                            <%=val.description%>
+                                        </p>
+
+                                        <% if(val.likes.indexOf(user._id)>-1){
+                                            %>
+                                            <a href="/unLikePost/<%=val._id%>"
+                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-blue-700 bg-white rounded-lg hover:bg-grey-200 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-white dark:hover:bg-zinc-200 dark:focus:ring-blue-800">
+
+                                                Liked
+                                                <svg class="h-6 w-6 pl-2 text-blue-400" viewBox="0 0 24 24"
+                                                    fill="currentColor" stroke="currentColor" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                    <path
+                                                        d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+                                                </svg>
+                                            </a>
+                                            <% }else { %>
+                                                <a href="/likePost/<%=val._id%>"
+                                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+                                                    Like
+                                                    <svg class="h-6 w-6 pl-2 text-white" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path
+                                                            d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+                                                    </svg>
+                                                </a>
+
+                                                <% } %>
+
+
+                                                    <a href="/postDetail/<%=val._id%>"
+                                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        Read more
+                                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 14 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                                        </svg>
+                                                    </a>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% }else{ %>
+                            <h3 class="text-zinc-200">No Post yet.</h3>
+
+                            <% } %>
+
+
+
+
+        </div>
+    </div>
+</body>
+
+</html>

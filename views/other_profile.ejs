@@ -1,0 +1,83 @@
+<html lang="en">
+
+</html>
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <div class="w-full h-full bg-zinc-900 overflow-hidden bg-cover bg-center p-10 text-white"
+        style="background-image: url('https://images.unsplash.com/photo-1497091071254-cc9b2ba7c48a?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <a class="text-blue-400" href="/">Go Back</a>
+
+        <div class="flex bg-transparent justify-center items-center pt-36">
+            <div class="max-w-[580px] rounded-lg w-[100%] overflow-hidden bg-white shadow-[0_0_1rem_rgba(0,0,0,0.2)] ">
+                <div class="card">
+                    <div class="grid grid-cols-5">
+                        <div class="col-span-2 p-3">
+                            <img src="<%=user.imageUrl%>" alt="demo" />
+                        </div>
+                        <div class="col-span-3 p-3">
+                            <div class="font-bold text-zinc-700">
+                                <%=user.name%>
+                            </div>
+                            <div class="mb-3 text-zinc-700">
+                                <%=user.email%>
+                            </div>
+                            <div
+                                class="card flex justify-between items-center text-gray-500 bg-gray-200 focus:bg-white rounded-lg p-2">
+                                <div class="text-center">
+                                    <p class="text-sm">Posts</p>
+                                    <p class="font-bold text-gray-800">
+                                        <%=user.post.length%>
+                                    </p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm">Followers</p>
+                                    <p class="font-bold text-gray-800">
+                                        <%=user.followers.length%>
+                                    </p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm">Total Likes</p>
+                                    <p class="font-bold text-gray-800">
+                                        <%=user.totalLikes%>
+                                    </p>
+                                </div>
+                            </div>
+                            <% if(user.followers.indexOf(myId)>-1){
+                                %>
+                                <div class="flex mt-3 gap-2">
+                                    <button onclick="window.location.href='/unFollow/<%=user._id%>'"
+                                        class="bg-blue-50 text-blue-700 py-2 px-4 rounded-lg hover:bg-blue-50 flex-1">
+                                        UnFollow
+                                    </button>
+                                </div>
+
+                                <% }else{ %>
+                                    <div class="flex mt-3 gap-2">
+                                        <button onclick="window.location.href='/follow/<%=user._id%>'"
+                                            class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 flex-1">
+                                            Follow
+                                        </button>
+                                    </div>
+                                    <% } %>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/script.js"></script>
+
+</body>
+
+</html>

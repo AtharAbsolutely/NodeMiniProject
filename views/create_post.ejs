@@ -1,0 +1,83 @@
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <div class="w-full h-full bg-zinc-900 overflow-auto bg-cover bg-center p-10 text-white"
+        style="background-image: url('https://images.unsplash.com/photo-1497091071254-cc9b2ba7c48a?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <!-- <div class="mt-10">
+            <h1 class="text-4xl font-semibold">Welcome <%=user.name%></h1>
+            <h1 class="text-2xl font-semibold mb-10"><%=user.email%></h1>
+
+            <a class="mr-2 text-zinc-700 bg-amber-200 rounded-lg py-2 px-4 text-[24px] font-semibold"
+                href="/logout">Logout</a>
+            <a class="mt-10 text-white bg-zinc-800 rounded-lg py-2 px-4 text-[24px] font-semibold" href="/delete">Delete
+                Account</a>
+        </div> -->
+        <nav class=" dark:bg-transparent">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class="w-20 h-20 rounded-full border-4 border-blue-500 overflow-hidden">
+                        <img src="https://picsum.photos/200" alt="Profile Image" class="object-cover w-20  h-20">
+                    </div>
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                        <%=user.name%>
+                    </span>
+                </a>
+                <button data-collapse-toggle="navbar-default" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul
+                        class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+                        <li>
+                            <a href="/home" class="text-white hover:text-amber-300" aria-current="page">Home</a>
+                        </li>
+                        <li>
+                            <a href="/myPost" class="text-white hover:text-amber-300">My
+                                Post</a>
+                        </li>
+                        <li>
+                            <a href="/createPost" class="text-amber-200 hover:text-amber-300">Create
+                                Post</a>
+                        </li>
+                        <li>
+                            <a href="/profile" class="text-white hover:text-amber-300">Profile</a>
+                        </li>
+                        <li>
+                            <a href="/logout" class="text-white hover:text-amber-300">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="form p-10 text-white ml-36 mr-36">
+            <form action="/createPost" method="post">
+                <input class="block w-full rounded-md outline-none  px-5 py-2 bg-zinc-800" type="text"
+                    placeholder="Title" name="title" required="true">
+                <input class="block w-full rounded-md outline-none mt-2  px-5 py-2 bg-zinc-800" type="text"
+                    placeholder="Image Url" name="imageUrl" required="true">
+                <textarea class="block w-full h-48 rounded-md outline-none mt-2 px-5 py-2 resize-none bg-zinc-800"
+                    placeholder="Write your Post Description" required="true" name="description"></textarea>
+                <input class="mt-2 bg-amber-200 px-5 py-2 rounded-md text-black" type="submit" value="Create Post">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
